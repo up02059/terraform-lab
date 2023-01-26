@@ -61,7 +61,7 @@ resource "ibm_is_subnet" "subnet3" {
   
 }
 resource "ibm_is_instance" "juaninstance1" {
-  name    = "instance1"
+  name    = "juaninstance1"
   image   = var.image
   profile = var.profile
   primary_network_interface {
@@ -75,7 +75,7 @@ resource "ibm_is_instance" "juaninstance1" {
 }
 
 resource "ibm_is_instance" "juaninstance2" {
-  name    = "instance2"
+  name    = "juaninstance2"
   image   = var.image
   profile = var.profile
   primary_network_interface {
@@ -90,7 +90,7 @@ resource "ibm_is_instance" "juaninstance2" {
 }
 
 resource "ibm_is_instance" "juaninstance3" {
-  name    = "instance3"
+  name    = "juaninstance3"
   image   = var.image
   profile = var.profile
   primary_network_interface {
