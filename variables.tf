@@ -28,7 +28,7 @@ variable "zone3" {
   description = "Define the 3nd zone of the region"
 }
 variable "zone1_cidr" {
-  default = "172.16.3.0/24"
+  default = "172.16.1.0/24"
   description = "CIDR block to be used for zone 1"
 }
 
