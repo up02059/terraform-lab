@@ -89,6 +89,29 @@ resource "ibm_is_instance" "juaninstance2" {
   resource_group = data.ibm_resource_group.rg.id
 }
 
+resource "ibm_is_instance" "juaninstance3" {
+  name    = "juaninstance3"
+  image   = var.image
+  profile = var.profile
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet3.id
+  }
+  
+ resource "ibm_is_floating_ip" "floatingip3" {
+  name = "fip3"
+  target = "${ibm_is_instance.instance3.primary_network_interface.0.id}"
+   
+}
+  output "FloatingIP-3" {
+    value = "${ibm_is_floating_ip.floatingip3.address}"
+}
+  vpc  = ibm_is_vpc.vpc1.id
+  zone = var.zone3
+  keys = [data.ibm_is_ssh_key.sshkey1.id]
+  user_data = data.template_cloudinit_config.cloud-init-apptier.rendered
+
+  resource_group = data.ibm_resource_group.rg.id
+}
 resource "ibm_is_security_group_rule" "sg1_tcp_rule_22" {
   group     = ibm_is_vpc.vpc1.default_security_group
   direction = "inbound"
