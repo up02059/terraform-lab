@@ -96,15 +96,7 @@ resource "ibm_is_instance" "instance3" {
   primary_network_interface {
     subnet = ibm_is_subnet.subnet3.id
   }
-  
- resource "ibm_is_floating_ip" "floatingip3" {
-  name = "fip3"
-  target = "${ibm_is_instance.instance3.primary_network_interface.0.id}"
-   
-}
-  output "FloatingIP-3" {
-    value = "${ibm_is_floating_ip.floatingip3.address}"
-}
+ 
   vpc  = ibm_is_vpc.vpc1.id
   zone = var.zone3
   keys = [data.ibm_is_ssh_key.sshkey1.id]
